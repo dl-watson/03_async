@@ -5,7 +5,7 @@ const writeFile = () => {
     "./writefile_then.txt",
     "fs.writeFile using then chaining",
     "utf-8",
-    (err, data) => {
+    (err) => {
       if (err) throw err;
       console.log("The file has been saved.");
     }
