@@ -1,17 +1,15 @@
 const fs = require("fs").promises;
 
 const writeFile = () => {
-  return fs
-    .writeFile(
-      "./writefile_then.txt",
-      "fs.writeFile using then chaining",
-      "utf-8",
-      (err, data) => {
-        if (err) throw err;
-        console.log("The file has been saved.");
-      }
-    )
-    .then((data) => console.log(data));
+  return fs.writeFile(
+    "./writefile_then.txt",
+    "fs.writeFile using then chaining",
+    "utf-8",
+    (err, data) => {
+      if (err) throw err;
+      console.log("The file has been saved.");
+    }
+  );
 };
 
 const writeFileAsync = async () => {
