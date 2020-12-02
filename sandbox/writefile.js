@@ -2,7 +2,7 @@ const fs = require("fs").promises;
 
 const writeFile = () => {
   return fs.writeFile(
-    "./writefile_then.txt",
+    "./streams/writefile_then.txt",
     "fs.writeFile using then chaining",
     "utf-8",
     (err) => {
@@ -15,7 +15,7 @@ const writeFile = () => {
 const writeFileAsync = async () => {
   try {
     const file = await fs.writeFile(
-      "./writefile_async.txt",
+      "./streams/writefile_async.txt",
       "fs.writeFile using async/await",
       "utf-8"
     );
