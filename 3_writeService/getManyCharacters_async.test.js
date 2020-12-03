@@ -1,4 +1,4 @@
-const { getManyCharacters } = require("./getManyCharacters");
+const { getManyCharacters } = require("./getManyCharacters_async");
 
 const ids = [2, 4, 6, 8];
 
