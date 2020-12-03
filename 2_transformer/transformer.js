@@ -30,5 +30,3 @@ const munge = (str) => {
   return _.reverse(lowercase).join("");
 };
 module.exports = { transformer };
-
-transformer(src);
