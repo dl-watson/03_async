@@ -18,7 +18,6 @@ const getManyCharacters = (ids) => {
 
 const urlFormatter = (ids) => {
   const url = `https://rickandmortyapi.com/api/character/`;
-
   return ids.map((id) => `${url}${id}`);
 };
 
