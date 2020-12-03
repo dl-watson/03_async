@@ -1,8 +1,8 @@
 const fetch = require("node-fetch");
 
-const getManyCharacters = async (ids) => {
+const getManyCharacters = (ids) => {
   const urls = urlFormatter(ids);
-  const promises = await Promise.all(
+  return Promise.all(
     urls.map((url) =>
       fetch(url).then((res) =>
         res
@@ -14,7 +14,6 @@ const getManyCharacters = async (ids) => {
       )
     )
   );
-  return promises;
 };
 
 const urlFormatter = (ids) => {
