@@ -1,7 +1,4 @@
-const fs = require("fs").promises;
-const { transformer } = require("./transformer");
-const src = "./2_transformer/palindrome.txt";
-const string = `Dammit I’m mad.
+Dammit I’m mad.
 Evil is a deed as I live.
 God, am I reviled? I rise, my bed on a sun, I melt.
 To be not one man emanating is sad. I piss.
@@ -29,12 +26,4 @@ A loss it is alas (sip). I’d assign it a name.
 Name not one bottle minus an ode by me:
 “Sir, I deliver. I’m a dog”
 Evil is a deed as I live.
-Dammit I’m mad.`;
-
-describe("transformer", () => {
-  it("reads a file, removes all capitals, makes all letters capital, then reverses the string", async () => {
-    await transformer(src);
-    const contents = await fs.readFile(src, "utf-8");
-    expect(contents).toEqual(string);
-  });
-});
+Dammit I’m mad.
