@@ -5,25 +5,30 @@ const src = "./palindrome.txt";
 const transformer = async (src) => {
   try {
     const req = await fsPromises.readFile(src, "utf-8");
-    const lowercase = req.replace(/[A-Z]*/g, (letter) => letter.toLowerCase());
-    const uppercase = lowercase
-      .replace(/[a-z]*/g, (letter) => letter.toUpperCase())
-      .split("");
-    const reversed = _.reverse(uppercase).join("");
+    const data = munge(req);
 
-    const munged = await fsPromises.writeFile(
+    const mungedFile = await fsPromises.writeFile(
       "./emordnilap.txt",
-      reversed,
+      data,
       "utf-8",
       (err) => {
         if (err) throw err;
       }
     );
 
-    return reversed;
+    return data;
   } catch (err) {
     console.log("Error: ", err);
   }
 };
 
+const munge = (str) => {
+  const lowercase = str
+    .replace(/[A-Z]*/g, (letter) => letter.toLowerCase())
+    .replace(/[a-z]*/g, (letter) => letter.toUpperCase())
+    .split("");
+  return _.reverse(lowercase).join("");
+};
 module.exports = { transformer };
+
+transformer(src);
