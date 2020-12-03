@@ -1,15 +1,19 @@
 const fetch = require("node-fetch");
 const url = "https://rickandmortyapi.com/api/character/";
 
-const rickAndMortyApi_async = (id) => {
-  const url = `https://rickandmortyapi.com/api/character/${id}`;
+const rickAndMortyApi_async = async (id) => {
+  try {
+    const url = `https://rickandmortyapi.com/api/character/${id}`;
 
-  return fetch(url)
-    .then((res) => res.json())
-    .then(
-      (data) =>
-        `Name: ${data.name}, Status: ${data.status}, Species: ${data.species}`
-    );
+    const res = await fetch(url);
+    const json = await res.json();
+    const results = `Name: ${json.name}, Status: ${json.status}, Species: ${json.species}`;
+    return results;
+  } catch (err) {
+    console.log("Error: ", err);
+  }
 };
 
 module.exports = { rickAndMortyApi_async };
+
+rickAndMortyApi_async(1);
