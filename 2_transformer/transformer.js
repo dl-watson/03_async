@@ -20,12 +20,10 @@ const transformer = async (src) => {
       }
     );
 
-    return munged;
+    return reversed;
   } catch (err) {
     console.log("Error: ", err);
   }
 };
 
 module.exports = { transformer };
-
-// transformer(src);
