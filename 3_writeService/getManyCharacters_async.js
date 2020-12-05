@@ -1,6 +1,6 @@
 const fetch = require("node-fetch");
 
-const getManyCharacters = async (ids) => {
+const getManyCharacters_async = async (ids) => {
   try {
     const urls = urlFormatter(ids);
     const promises = await Promise.all(urls.map((url) => fetch(url)));
@@ -20,4 +20,4 @@ const urlFormatter = (ids) => {
   return ids.map((id) => `${url}${id}`);
 };
 
-module.exports = { getManyCharacters };
+module.exports = { getManyCharacters_async };
