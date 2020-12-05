@@ -1,15 +1,22 @@
 const { getManyCharacters } = require("./getManyCharacters");
-
+const fetch = require("node-fetch");
+const mockAPI = require("./mocks/mockAPI.json");
 const ids = [2, 4, 6, 8];
+const mockExpected = [
+  "Name: Morty Smith, Status: Alive, Species: Human",
+  "Name: Morty Smith, Status: Alive, Species: Human",
+  "Name: Morty Smith, Status: Alive, Species: Human",
+  "Name: Morty Smith, Status: Alive, Species: Human",
+];
+
+jest.mock("node-fetch");
 
 describe("getManyCharacters", () => {
-  it("takes an array of ids and returns a promise that resolves with an array of characters", async () => {
+  it("mocks response from Rick and Morty API", async () => {
+    fetch.mockResolvedValue({
+      json: () => Promise.resolve(mockAPI),
+    });
     const actual = await getManyCharacters(ids);
-    expect(actual).toEqual([
-      "Name: Morty Smith, Status: Alive, Species: Human",
-      "Name: Beth Smith, Status: Alive, Species: Human",
-      "Name: Abadango Cluster Princess, Status: Alive, Species: Alien",
-      "Name: Adjudicator Rick, Status: Dead, Species: Human",
-    ]);
+    expect(actual).toEqual(mockExpected);
   });
 });
